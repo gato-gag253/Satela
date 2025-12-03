@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>Satela - Proyecto</title>
 
-<link rel="icon" href="https://aicdn.picsart.com/58b5e0d0-eea6-4278-841f-40e4b89963bb.png">
+<link rel="icon" href="">
 
 <style>
   body { margin: 0; font-family: Arial, sans-serif; background: #f4f4f7; color: #222; transition: background 0.3s, color 0.3s; }
@@ -124,7 +124,7 @@
 
 <div class="navbar">
   <div class="nav-logo">
-    <img src="https://aicdn.picsart.com/58b5e0d0-eea6-4278-841f-40e4b89963bb.png" alt="Logo Satela">
+    <img src="/Imagenes/Logo Satela.png" alt="Logo Satela">
     Satela
   </div>
 
@@ -160,7 +160,7 @@
 
 <div id="page-cansat" class="container" style="display:none;">
   <div class="header">
-    <img src="https://aicdn.picsart.com/468ab84f-ca2f-4d05-a7b2-4f27f79c5636.png">
+    <img src="/Imagenes/Logo Satela.png">
     <h1>Equipo CANSAT</h1>
     <h3>Información general</h3>
   </div>
@@ -186,11 +186,11 @@
 <script>
   // DATOS LIMPIOS (Sin roles extra)
   const items = [
-    { img: "/Sofia.jpg", title: "Sofía Rojas", text: "Información del alumno...", email: "sg.rojas@alumno.etec.um.edu.ar" },
-    { img: "/Nacho.jpg", title: "Juan Ignacio Calderón", text: "Información del alumno...", email: "jil.calderon@alumno.etec.um.edu.ar" },
-    { img: "https://aicdn.picsart.com/58b5e0d0-eea6-4278-841f-40e4b89963bb.png", title: "Gastón García", text: "Información del alumno...", email: "gal.garcia@alumno.etec.um.edu.ar" },
-    { img: "/Santy.jpg", title: "Santiago Juárez", text: "Información del alumno...", email: "sc.juarez@alumno.etec.um.edu.ar" },
-    { img: "https://aicdn.picsart.com/58b5e0d0-eea6-4278-841f-40e4b89963bb.png", title: "Agustín Cerroni", text: "Información del alumno...", email: "a.cerroni@alumno.etec.um.edu.ar" }
+    { img: "/Imagenes/Sofia.jpg", title: "Sofía Rojas", text: "Información del alumno...", email: "sg.rojas@alumno.etec.um.edu.ar" },
+    { img: "/Imagenes/Nacho.jpg", title: "Juan Ignacio Calderón", text: "Información del alumno...", email: "jil.calderon@alumno.etec.um.edu.ar" },
+    { img: "/Imagenes/Logo Satela.png", title: "Gastón García", text: "Información del alumno...", email: "gal.garcia@alumno.etec.um.edu.ar" },
+    { img: "/Imagenes/Santy.jpg", title: "Santiago Juárez", text: "Información del alumno...", email: "sc.juarez@alumno.etec.um.edu.ar" },
+    { img: "/Imagenes/Logo Satela.png", title: "Agustín Cerroni", text: "Información del alumno...", email: "a.cerroni@alumno.etec.um.edu.ar" }
   ];
 
   // GENERAR CARDS
@@ -201,7 +201,7 @@
       card.className = "card";
       const img = document.createElement("img");
       img.src = item.img; img.alt = item.title;
-      img.onerror = function() { this.src = 'https://aicdn.picsart.com/58b5e0d0-eea6-4278-841f-40e4b89963bb.png'; }; // Fallback
+      img.onerror = function() { this.src = '/Imagenes/Cansat_info.png'; }; // Fallback
       const title = document.createElement("div");
       title.className = "card-title";
       title.textContent = item.title;
