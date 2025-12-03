@@ -160,7 +160,7 @@
 
 <div id="page-cansat" class="container" style="display:none;">
   <div class="header">
-    <img src="https://gato-gag253.github.io/Satela/Imagenes/Logo%20Satela.png">
+    <img src="https://gato-gag253.github.io/Satela/Imagenes/Cansat_Info.png">
     <h1>Equipo CANSAT</h1>
     <h3>Información general</h3>
   </div>
@@ -201,7 +201,7 @@
       card.className = "card";
       const img = document.createElement("img");
       img.src = item.img; img.alt = item.title;
-      img.onerror = function() { this.src = 'https://gato-gag253.github.io/Satela/Imagenes/Cansat_Info.png'; }; // Fallback
+      img.onerror = function() { this.src = 'https://gato-gag253.github.io/Satela/Imagenes/Logo%20Satela.png'; }; // Fallback
       const title = document.createElement("div");
       title.className = "card-title";
       title.textContent = item.title;
@@ -243,4 +243,5 @@
 
 </body>
 </html>
+
 
