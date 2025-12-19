@@ -180,15 +180,13 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 
 <script>
-  //Google ANALYTICS
+  
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
 
-  gtag('config', 'G-WDL6C4ZSZ4');
-  
-
-  // Datos personas
+  // DATOS
   const items = [
     { img: "https://gato-gag253.github.io/Satela/Imagenes/Sofia.jpg", title: "Sofía Rojas", text: "Información del alumno...", email: "sg.rojas@alumno.etec.um.edu.ar" },
     { img: "https://gato-gag253.github.io/Satela/Imagenes/Nacho.jpg", title: "Juan Ignacio Calderón", text: "Información del alumno...", email: "jil.calderon@alumno.etec.um.edu.ar" },
@@ -205,7 +203,7 @@
       card.className = "card";
       const img = document.createElement("img");
       img.src = item.img; img.alt = item.title;
-      img.onerror = function() { this.src = 'https://gato-gag253.github.io/Satela/Imagenes/Logo%20Satela.png'; }; // Fallback
+      img.onerror = function() { this.src = 'https://gato-gag253.github.io/Satela/Imagenes/Logo%20Satela.png'; };
       const title = document.createElement("div");
       title.className = "card-title";
       title.textContent = item.title;
@@ -216,7 +214,7 @@
     });
   }
 
-  // POPUP LOGICA
+  // --- LÓGICA DE POPUP CON TRACKING ---
   const popupBg = document.getElementById("popupBg");
   const popupImg = document.getElementById("popupImg");
   const popupTitle = document.getElementById("popupTitle");
@@ -226,6 +224,12 @@
 
   function openPopup(i) {
     if(!items[i]) return;
+    
+    // Tracking: Registra quién fue clickeado
+    gtag('event', 'ver_perfil_alumno', {
+      'nombre_alumno': items[i].title
+    });
+
     popupImg.src = items[i].img;
     popupTitle.textContent = items[i].title;
     popupText.textContent = items[i].text;
@@ -236,8 +240,13 @@
   if(closeBtn) closeBtn.onclick = () => popupBg.style.display = "none";
   if(popupBg) popupBg.onclick = (e) => { if (e.target === popupBg) popupBg.style.display = "none"; };
 
-  // NAVEGACION
+  // --- NAVEGACIÓN CON TRACKING ---
   function showPage(pg) {
+    // Tracking: Registra qué sección visitan
+    gtag('event', 'cambio_seccion', {
+      'seccion': pg
+    });
+
     document.getElementById("page-datos").style.display = pg === "datos" ? "block" : "none";
     document.getElementById("page-cansat").style.display = pg === "cansat" ? "block" : "none";
   }
@@ -246,6 +255,7 @@
 </script>
 </body>
 </html>
+
 
 
 
