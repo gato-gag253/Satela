@@ -1,265 +1,128 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Satela - Proyecto</title>
-
-<link rel="icon" href="https://gato-gag253.github.io/Satela/Imagenes/Logo%20Satela.png">
-
-<style>
-  body { margin: 0; font-family: Arial, sans-serif; background: #f4f4f7; color: #222; transition: background 0.3s, color 0.3s; }
-
-  /* MODO OSCURO */
-  body.dark { background: #1e1e1e; color: #e4e4e4; }
-  body.dark .navbar { background: #2b2b2b; border-bottom: 1px solid #444; }
-  body.dark .nav-item { color: #ddd; }
-  body.dark .nav-item:hover { color: #fff; }
-  body.dark .card, body.dark .popup, body.dark .widget-box { background: #2b2b2b; color: #fff; }
-  body.dark .email-box { background: #333; border: 1px solid #444; }
-  body.dark .email-title { color: #ccc; }
-  body.dark .email-text { color: #fff; }
-
-  /* NAVBAR */
-  .navbar { width: 100%; display: flex; align-items: center; padding: 10px 25px; background: #ffffffcc; backdrop-filter: blur(6px); border-bottom: 1px solid #ddd; box-sizing: border-box; position: sticky; top: 0; z-index: 1000; }
-  .nav-logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: #1a1a1a; }
-  .nav-logo img { height: 35px; width: auto; object-fit: contain; }
-
-  .nav-links { display: flex; gap: 30px; margin-left: auto; }
-  .nav-item { cursor: pointer; font-size: 15px; color: #444; font-weight: 500; transition: 0.2s; }
-  .nav-item:hover { color: #000; }
-
-  /* BOTON TEMA */
-  .theme-btn { margin-left: 25px; padding: 6px 12px; border-radius: 6px; border: 1px solid #ccc; cursor: pointer; background: transparent; color: inherit; font-size: 14px; }
-
-  /* CONTENEDORES */
-  .container { padding: 25px; max-width: 1200px; margin: 0 auto; }
-
-  /* Node-red widgets */
-  .widgets-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; 
-    gap: 20px;
-    margin-top: 20px;
-  }
-  
-  
-  @media (max-width: 768px) {
-    .widgets-grid { grid-template-columns: 1fr; }
-  }
-
-  .widget-box {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    padding: 10px;
-    height: 450px; /* Altura del widget node-red */
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .widget-header { font-weight: bold; margin-bottom: 10px; font-size: 16px; border-bottom: 1px solid #eee; padding-bottom: 8px;}
-  
-  iframe.node-red-frame {
-    width: 100%;
-    height: 100%;
-    border: none;
-    border-radius: 8px;
-    background: #fafafa;
-    overflow: hiden;
-  }
-
-  /* Cartas Cansat */
-
-  .header {
-    padding: 0;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  .header img {
-
-    width: calc(100% + 115px);
-    margin-left: -60px;
-    margin-top: -25px; 
-  
-    height: 400px;  
-    object-fit: cover;
-    border-radius: 0 0 12px 12px;
-    margin-bottom: 15px;
-    display: block;
-  }
-
-  .header h1 { font-size: 26px; font-weight: 700; margin-top: 10px; }
-  .header h3 { font-size: 16px; margin-top: 8px; opacity: 0.7; font-weight: 400; }
-
-  .cards-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; padding: 20px 0; }
-  .card { background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); overflow: hidden; cursor: pointer; transition: transform .2s; }
-  .card:hover { transform: translateY(-5px); }
-  .card img { width: 100%; height: 200px; object-fit: cover; object-position: top center; } 
-  .card-title { font-size: 16px; font-weight: bold; padding: 12px; text-align: center; }
-
-  /* Cartas */
-  .popup-bg { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6); display: none; align-items: center; justify-content: center; z-index: 9999; }
-  .popup { width: 90%; max-width: 600px; background: white; border-radius: 12px; padding: 20px; max-height: 90vh; overflow-y: auto; }
-  .popup img { width: 100%; height: auto; max-height: 50vh; object-fit: contain; background: #eee; border-radius: 8px; margin-bottom: 15px; display: block; margin-left: auto; margin-right: auto; }
-  .popup-title { font-size: 22px; font-weight: 700; margin-bottom: 8px;}
-  .popup-text { font-size: 15px; line-height: 1.5; color: #555; }
-  body.dark .popup-text { color: #ccc; }
-  
-  .email-box { background: #f9f9f9; padding: 10px 15px; border-radius: 8px; margin-top: 15px; border: 1px solid #eee; }
-  .email-title { font-weight: 700; font-size: 13px; margin-bottom: 2px; text-transform: uppercase; color: #777;}
-  .email-text { font-size: 14px; }
-  .close-btn { margin-top: 15px; background: #333; color: white; padding: 10px; border-radius: 6px; text-align: center; cursor: pointer; font-weight: bold; font-size: 14px;}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satela - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div class="navbar">
-  <div class="nav-logo">
-    <img src="https://gato-gag253.github.io/Satela/Imagenes/Logo%20Satela.png" alt="Logo Satela">
-    Satela
-  </div>
+    <div class="side-triangle left-triangle"></div>
+    <div class="side-triangle right-triangle"></div>
 
-  <div class="nav-links">
-    <div class="nav-item" onclick="showPage('datos')">Datos</div>
-    <div class="nav-item" onclick="showPage('cansat')">CANSAT</div>
-  </div>
+    <header class="navbar" id="mainNavbar">
+        <div class="logo-area">
+            <div class="img-placeholder">
+                <img src="https://gato-gag253.github.io/Satela/Imagenes/Logo%20Satela.png" alt="Logo">
+            </div>
+            <span class="brand-name">Satela</span>
+        </div>
+        <nav>
+            <a href="#" class="nav-link active" onclick="switchTab('datos', event)">DATOS</a>
+            <a href="#" class="nav-link" onclick="switchTab('cansat', event)">CANSAT</a>
+            <a href="#" class="nav-link theme-btn" onclick="toggleTheme(event)">TEMA</a>
+        </nav> </header>
 
-  <button class="theme-btn" onclick="toggleTheme()">Tema</button>
-</div>
+    <div class="main-wrapper">
+        
+        <main id="view-datos" class="tab-content">
+            <h1 class="main-title">CANSAT DATOS</h1>
 
+            <div class="grid-layout">
+                <div class="column">
+                    <div class="widget">
+                        <div class="widget-header"><span>ALTITUD (m)</span></div>
+                        <div class="iframe-container small-h">
+                            <div id="dato-altitud" class="fake-chart-data">-- m</div>
+                        </div>
+                    </div>
+                    <div class="widget">
+                        <div class="widget-header"><span>TEMPERATURA (°C)</span></div>
+                        <div class="data-row">
+                            <span id="dato-temp" class="sensor-value">-- °C</span>
+                        </div>
+                    </div>
+                    <div class="widget">
+                        <div class="widget-header"><span>PRESIÓN (hPa)</span></div>
+                        <div class="data-row">
+                            <span id="dato-presion" class="sensor-value">--</span>
+                        </div>
+                    </div>
+                </div>
 
-<div id="page-datos" class="container">
-  <h2 style="margin-bottom:5px;">Datos en tiempo real</h2>
-  
+                <div class="column-center">
+                    <div class="widget video-widget">
+                        <div class="widget-header"><span>Video</span></div>
+                        <div class="video-frame">
+                            <iframe src="" frameborder="0"></iframe>
+                        </div>
+                    </div>
+                </div>
 
-  <div class="widgets-grid">
-    
-    <div class="widget-box">
-      <div class="widget-header">Estado del Cohete</div>
-      <iframe class="node-red-frame" src="https://pinfire-adaline-celebrative.ngrok-free.dev/dashboard/widget1"></iframe>
+                <div class="column">
+                    <div class="widget">
+                        <div class="widget-header"><span>HUMEDAD (%)</span></div>
+                        <div class="data-row">
+                            <span id="dato-humedad" class="sensor-value">-- %</span>
+                        </div>
+                    </div>
+                    
+                    <div class="widget">
+                        <div class="widget-header"><span>GPS COORD</span></div>
+                        <div class="gps-box">
+                            <div class="coords-text">
+                                <p>39.3001°N</p>
+                                <p>12.16053°E</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="widget">
+                        <div class="widget-header"><span>VELOCIDAD (m/s)</span></div>
+                        <div class="data-row">
+                            <span id="dato-velocidad" class="sensor-value">--</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <main id="view-cansat" class="tab-content" style="display: none;">
+            <div class="section-hero">
+                <div class="hero-overlay">
+                    <h2>EQUIPO CANSAT</h2>
+                    <p>Conoce a los especialistas detrás de la misión</p>
+                </div>
+            </div>
+            <div class="team-grid" id="team-container"></div>
+        </main>
+
+        <footer class="footer">
+            <div class="email-contact">info@satela.com</div>
+            <div class="footer-logo">Satela</div>
+        </footer>
     </div>
-    
 
-    <div class="widget-box">
-      <div class="widget-header">Video tomado por la camara en tiempo real</div>
-      <iframe class="node-red-frame" src="https://pinfire-adaline-celebrative.ngrok-free.dev/dashboard/page2"></iframe>
+    <div class="popup-overlay" id="popupBg">
+        <div class="popup-card">
+            <button class="close-btn" onclick="closePopup()">×</button>
+            <div class="popup-banner" id="popupBanner"></div>
+            <div class="popup-content-wrapper">
+                <div class="popup-img-container">
+                    <img id="popupImg" src="" alt="Foto Alumno">
+                </div>
+                <h2 id="popupTitle">Nombre</h2>
+                <p id="popupText" class="popup-desc"></p>
+                <div class="popup-contact">
+                    <span class="label">CONTACTO</span>
+                    <a id="popupEmail" href="#" class="email-link"></a>
+                </div>
+            </div>
+        </div>
     </div>
 
-  </div>
-</div>
-
-
-<div id="page-cansat" class="container" style="display:none;">
-  <div class="header">
-    <img src="https://gato-gag253.github.io/Satela/Imagenes/Cansat_Info.png">
-    <h1>Equipo CANSAT</h1>
-    <h3>Información general</h3>
-  </div>
-
-  <div class="cards-container" id="cardBox"></div>
-</div>
-
-
-<div class="popup-bg" id="popupBg">
-  <div class="popup" id="popupWindow">
-    <img id="popupImg" src="">
-    <div class="popup-title" id="popupTitle"></div>
-    <div class="popup-text" id="popupText"></div>
-    <div class="email-box">
-      <div class="email-title">Correo</div>
-      <div class="email-text" id="popupEmail"></div>
-    </div>
-    <div class="close-btn" id="closePopupBtn">Cerrar</div>
-  </div>
-</div>
-
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-
-<script>
-  
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
-
-  // DATOS
-  const items = [
-    { img: "https://gato-gag253.github.io/Satela/Imagenes/Sofia.jpg", title: "Sofía Rojas", text: "Información del alumno...", email: "sg.rojas@alumno.etec.um.edu.ar" },
-    { img: "https://gato-gag253.github.io/Satela/Imagenes/Nacho.jpg", title: "Juan Ignacio Calderón", text: "Información del alumno...", email: "jil.calderon@alumno.etec.um.edu.ar" },
-    { img: "/Imagenes/Logo Satela.png", title: "Gastón García", text: "Información del alumno...", email: "gal.garcia@alumno.etec.um.edu.ar" },
-    { img: "https://gato-gag253.github.io/Satela/Imagenes/Santy.jpg", title: "Santiago Juárez", text: "Información del alumno...", email: "sc.juarez@alumno.etec.um.edu.ar" },
-    { img: "/Imagenes/Logo Satela.png", title: "Agustín Cerroni", text: "Información del alumno...", email: "a.cerroni@alumno.etec.um.edu.ar" }
-  ];
-
-  // GENERAR CARDS
-  const container = document.getElementById("cardBox");
-  if (container) {
-     items.forEach((item, i) => {
-      const card = document.createElement("div");
-      card.className = "card";
-      const img = document.createElement("img");
-      img.src = item.img; img.alt = item.title;
-      img.onerror = function() { this.src = 'https://gato-gag253.github.io/Satela/Imagenes/Logo%20Satela.png'; };
-      const title = document.createElement("div");
-      title.className = "card-title";
-      title.textContent = item.title;
-      card.appendChild(img);
-      card.appendChild(title);
-      card.onclick = () => openPopup(i);
-      container.appendChild(card);
-    });
-  }
-
-  // --- LÓGICA DE POPUP CON TRACKING ---
-  const popupBg = document.getElementById("popupBg");
-  const popupImg = document.getElementById("popupImg");
-  const popupTitle = document.getElementById("popupTitle");
-  const popupText = document.getElementById("popupText");
-  const popupEmail = document.getElementById("popupEmail");
-  const closeBtn = document.getElementById("closePopupBtn");
-
-  function openPopup(i) {
-    if(!items[i]) return;
-    
-    // Tracking: Registra quién fue clickeado
-    gtag('event', 'ver_perfil_alumno', {
-      'nombre_alumno': items[i].title
-    });
-
-    popupImg.src = items[i].img;
-    popupTitle.textContent = items[i].title;
-    popupText.textContent = items[i].text;
-    popupEmail.textContent = items[i].email;
-    popupBg.style.display = "flex";
-  }
-
-  if(closeBtn) closeBtn.onclick = () => popupBg.style.display = "none";
-  if(popupBg) popupBg.onclick = (e) => { if (e.target === popupBg) popupBg.style.display = "none"; };
-
-  // --- NAVEGACIÓN CON TRACKING ---
-  function showPage(pg) {
-    // Tracking: Registra qué sección visitan
-    gtag('event', 'cambio_seccion', {
-      'seccion': pg
-    });
-
-    document.getElementById("page-datos").style.display = pg === "datos" ? "block" : "none";
-    document.getElementById("page-cansat").style.display = pg === "cansat" ? "block" : "none";
-  }
-
-  function toggleTheme() { document.body.classList.toggle("dark"); }
-</script>
+    <script src="script.js"></script>
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
