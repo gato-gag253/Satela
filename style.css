@@ -10,14 +10,14 @@ body {
     margin: 0;
     background-color: var(--bg-body);
     color: #333;
-    overflow-x: hidden; /* Evita scroll horizontal indeseado */
+    overflow-x: hidden; 
 }
 
-/* --- TRIÁNGULOS --- */
+/*Costados*/
 .side-triangle {
     position: fixed;
     top: 0;
-    width: 7vw; /* Un poco más anchos visualmente */
+    width: 7vw; 
     height: 100vh;
     background-color: var(--navy-blue);
     z-index: -10; 
@@ -25,7 +25,7 @@ body {
 .left-triangle { left: 0; clip-path: polygon(0 0, 100% 0, 0 85%); }
 .right-triangle { right: 0; clip-path: polygon(100% 100%, 0 100%, 100% 15%); }
 
-/* --- NAVBAR --- */
+/*^Menu superior*/
 .navbar {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -35,14 +35,12 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* Padding lateral amplio para evitar los triángulos */
     padding: 0 10vw; 
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     z-index: 1000;
     transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-/* Estado Navy (Cansat) */
 .navbar.navy-nav {
     background-color: var(--navy-blue);
     color: white;
@@ -63,10 +61,9 @@ body {
 }
 .nav-link.active { color: var(--accent-blue); border-bottom: 2px solid var(--accent-blue); }
 
-/* --- CONTENEDOR PRINCIPAL Y AJUSTES DE DISEÑO --- */
+
 .main-wrapper { 
     margin-top: 80px; 
-    /* AQUÍ ESTÁ EL ARREGLO: Más padding lateral para que no toque los triángulos */
     padding: 0 12vw; 
     max-width: 1400px;
     margin-left: auto;
@@ -82,19 +79,19 @@ body {
     font-size: 1.8rem;
 }
 
-/* Grid Dashboard */
+/* Datos */
 .grid-layout { 
     display: grid; 
-    grid-template-columns: 1fr 2fr 1fr; /* Mantenemos proporciones */
+    grid-template-columns: 1fr 2fr 1fr; 
     gap: 20px; 
     padding-bottom: 40px;
 }
 
-/* Widgets - Más compactos */
+/* Widgets Datos*/
 .widget { 
     background: white; 
     border-radius: 10px; 
-    padding: 15px; /* Menos padding (antes 20px) */
+    padding: 15px; 
     border: 1px solid #e0e6ed; 
     box-shadow: 0 2px 8px rgba(0,0,0,0.03); 
     display: flex;
@@ -114,17 +111,17 @@ body {
     text-transform: uppercase;
 }
 
-/* Datos Numéricos - Sin iconos y centrados */
+/* Datos*/
 .data-row { 
     display: flex; 
     align-items: center; 
-    justify-content: center; /* Centrado total */
+    justify-content: center; 
     padding: 5px 0; 
     height: 100%;
 }
 
 .sensor-value { 
-    font-size: 2rem; /* Texto más chico (antes 2.2rem) */
+    font-size: 2rem; 
     font-weight: 700; 
     color: #1a1a1a; 
 }
@@ -133,7 +130,7 @@ body {
 .gps-box { text-align: center; padding: 5px 0; }
 .coords-text p { margin: 2px 0; font-weight: 600; color: #444; font-size: 0.9rem; }
 
-/* Contenedores interiores (Charts/Video) */
+/* Widget video */
 .iframe-container {
     background: #f8f9fa; border-radius: 6px; 
     display: flex; align-items: center; justify-content: center;
@@ -150,8 +147,7 @@ body {
 }
 .video-frame iframe { width: 100%; height: 100%; }
 
-/* --- EQUIPO CANSAT --- */
-/* En style.css */
+/*Contacto */
 
 .section-hero {
     width: 100%; 
@@ -188,8 +184,7 @@ body {
 .team-card img { width: 100%; height: 200px; object-fit: cover; object-position: top; }
 .team-card h3 { margin: 12px 0; font-size: 1rem; color: var(--navy-blue); font-weight: 700; text-align: center; }
 
-/* --- POPUP --- */
-/* (Mismo CSS de antes para el popup, no requiere cambios si te gustaba) */
+/*POP UP equipo*/
 .popup-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 26, 51, 0.85); z-index: 2000; display: none; justify-content: center; align-items: center; backdrop-filter: blur(5px); }
 .popup-card { background: white; width: 90%; max-width: 450px; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.3); position: relative; animation: popupFadeIn 0.3s ease-out; }
 @keyframes popupFadeIn { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
@@ -202,47 +197,45 @@ body {
 .popup-contact { background: #f8f9fa; padding: 12px; border-radius: 8px; border-left: 4px solid var(--accent-blue); text-align: left; }
 .popup-contact .label { display: block; font-size: 0.7rem; font-weight: bold; color: #999; margin-bottom: 3px; }
 .email-link { color: #333; font-weight: 600; text-decoration: none; font-size: 1rem; }
+/* Perdon que esta todo pegado*/
 
-/* Footer */
 .footer { margin-top: 40px; padding-top: 20px; padding-bottom: 20px; border-top: 1px solid #eee; display: flex; justify-content: space-between; color: #777; font-size: 0.85rem;}
 
-/* Responsive */
 @media (max-width: 1100px) {
     .grid-layout { grid-template-columns: 1fr; }
     .side-triangle { display: none; } /* En pantallas pequeñas quitamos los triangulos */
     .navbar, .main-wrapper { padding-left: 20px; padding-right: 20px; }
 }
 
-/* --- ESTILO DEL BOTÓN TEMA --- */
+/* Boton tema*/
 .theme-btn {
-    border: 1px solid #000; /* Borde negro muy fino */
-    border-radius: 20px;    /* Bordes redondeados */
-    padding: 5px 20px;      /* Espacio interno */
+    border: 1px solid #000; 
+    border-radius: 20px;    
+    padding: 5px 20px;     
     margin-left: 20px;
     transition: all 0.3s ease;
 }
 
 .theme-btn:hover {
     background-color: #000;
-    color: #fff !important; /* Texto blanco al pasar el mouse */
+    color: #fff !important; 
 }
-
-/* --- MODO OSCURO (Dark Mode) --- */
+/*MODO OSCURO*/
 body.dark-mode {
-    background-color: #121212; /* Fondo casi negro */
+    background-color: #121212; 
     color: #f0f0f0;
 }
 
-/* Navbar en modo oscuro */
+/* menu en modo oscuro */
 body.dark-mode .navbar {
-    background: rgba(30, 30, 30, 0.95); /* Gris oscuro translúcido */
+    background: rgba(30, 30, 30, 0.95); 
     box-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 body.dark-mode .brand-name { color: #fff; }
 body.dark-mode .nav-link { color: #bbb; }
 body.dark-mode .nav-link.active { color: var(--accent-blue); }
 
-/* Botón Tema en modo oscuro (cambia borde a blanco para que se vea) */
+/* Botón Tema en modo oscuro */
 body.dark-mode .theme-btn {
     border-color: #fff;
     color: #fff;
@@ -256,7 +249,7 @@ body.dark-mode .theme-btn:hover {
 body.dark-mode .widget,
 body.dark-mode .team-card,
 body.dark-mode .popup-card {
-    background-color: #1e1e1e; /* Gris oscuro */
+    background-color: #1e1e1e; 
     border-color: #333;
     color: #fff;
 }
@@ -276,71 +269,67 @@ body.dark-mode .main-title {
     color: #fff;
 }
 
-/* Ajuste de iframes/gráficos para que no brillen tanto */
+/* Iframes para que no brillen  */
 body.dark-mode .iframe-container {
     background: #2c2c2c;
     border: 1px solid #444;
 }
-/* --- AJUSTES DE COLOR PARA MODO OSCURO (Mejora de Legibilidad) --- */
+/* Ajustes modo oscuro para que se lea */
 
-/* 1. Cambiamos el azul oscuro por un "Celeste Claro" brillante */
 body.dark-mode .email-link,
 body.dark-mode .nav-link.active,
 body.dark-mode .theme-btn:hover {
     color: #66b2ff !important; /* Celeste legible sobre negro */
 }
 
-/* 2. Ajuste específico para la cajita de contacto en el Popup */
+
 body.dark-mode .popup-contact {
-    background-color: #2c2c2c; /* Fondo gris oscuro, no blanco */
-    border-left-color: #66b2ff; /* Borde celeste */
+    background-color: #2c2c2c; 
+    border-left-color: #66b2ff; 
 }
 
-/* 3. Etiquetas pequeñas (como "CONTACTO") */       
+/* 3. Etiquetas"CONTACTO") */       
 body.dark-mode .popup-contact .label {
-    color: #bbb; /* Gris más claro para que se lea bien */
+    color: #bbb; 
 }
 
-/* 4. Si hay bordes azules en las tarjetas al pasar el mouse */
+
 body.dark-mode .team-card:hover {
     border-color: #66b2ff;
 }
 
-/* --- CORRECCIÓN FINAL POP-UPS MODO OSCURO --- */
-
 /* 1. Fondo de la tarjeta y color general */
 body.dark-mode .popup-card {
-    background-color: #1e1e1e; /* Fondo Gris Oscuro */
-    border: 1px solid #333;    /* Borde sutil */
+    background-color: #1e1e1e; 
+    border: 1px solid #333;    
 }
 
-/* 2. Nombre del Alumno (H2) - Antes era azul oscuro, ahora Blanco */
+/* 2. Nombre del Alumno en modo oscuro*/
 body.dark-mode .popup-card h2 {
     color: #ffffff !important;
 }
 
-/* 3. Texto de la descripción (P) - Antes era gris oscuro, ahora Gris Claro */
 body.dark-mode .popup-desc {
     color: #e0e0e0 !important; 
 }
 
-/* 4. Caja de Contacto (Donde está el mail) */
+
 body.dark-mode .popup-contact {
-    background-color: #2d2d2d; /* Fondo gris ligeramente diferente */
-    border-left: 4px solid #66b2ff; /* Borde celeste neón */
+    background-color: #2d2d2d; 
+    border-left: 4px solid #66b2ff; 
 }
 
-/* 5. La etiqueta pequeña "CONTACTO" */
+
 body.dark-mode .popup-contact .label {
-    color: #aaa; /* Gris medio para que no brille tanto */
+    color: #aaa; 
 }
 
 /* 6. El correo electrónico */
 body.dark-mode .email-link {
-    color: #66b2ff !important; /* Celeste claro */
+    color: #66b2ff !important; 
 }
 
-/* 7. Botón de Cerrar (X) */
+
 body.dark-mode .close-btn {
     background-color: rgba(255, 255, 255, 0.2);
     color: white;
@@ -349,20 +338,16 @@ body.dark-mode .close-btn:hover {
     background-color: rgba(255, 255, 255, 0.4);
 }
 
-/* --- CORRECCIÓN FINAL DE NOMBRES EN MODO OSCURO --- */
-
-/* 1. Nombres en las tarjetas de la lista (CANSAT) */
+/* 1. Nombres del equipo en modo oscuro */
 body.dark-mode .team-card h3 {
-    color: #166585 !important; /* Blanco puro */
+    color: #166585 !important; 
 }
 
 /* 2. Nombre grande dentro del Pop-up */
 body.dark-mode #popupTitle, 
 body.dark-mode .popup-card h2 {
-    color: #ffffff !important; /* Blanco puro */
+    color: #ffffff !important; 
 }
-
-/* 3. Asegurar que la descripción también se lea */
 body.dark-mode .popup-desc {
-    color: #cccccc !important; /* Gris claro */
+    color: #cccccc !important; 
 }

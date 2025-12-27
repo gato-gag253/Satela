@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Satela - Dashboard</title>
+    <title>Satela - Cansat </title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,21 +14,22 @@
     <header class="navbar" id="mainNavbar">
         <div class="logo-area">
             <div class="img-placeholder">
-                <img src="https://gato-gag253.github.io/Satela/Imagenes/Logo%20Satela.png" alt="Logo">
+                <img src="https://gato-gag253.github.io/Satela/Imagenes/Logo%20Satela.png" alt="Logo"> /*Logo*/
             </div>
             <span class="brand-name">Satela</span>
         </div>
+       
         <nav>
             <a href="#" class="nav-link active" onclick="switchTab('datos', event)">DATOS</a>
             <a href="#" class="nav-link" onclick="switchTab('cansat', event)">CANSAT</a>
-            <a href="#" class="nav-link theme-btn" onclick="toggleTheme(event)">TEMA</a>
+            <a href="javascript:void(0)" class="nav-link theme-btn" onclick="toggleTheme(event)">TEMA</a>
         </nav> </header>
 
     <div class="main-wrapper">
         
         <main id="view-datos" class="tab-content">
             <h1 class="main-title">CANSAT DATOS</h1>
-
+           
             <div class="grid-layout">
                 <div class="column">
                     <div class="widget">
@@ -69,11 +70,10 @@
                     </div>
                     
                     <div class="widget">
-                        <div class="widget-header"><span>GPS COORD</span></div>
+                        <div class="widget-header"><span>GPS CORDENADAS</span></div>
                         <div class="gps-box">
                             <div class="coords-text">
-                                <p>39.3001°N</p>
-                                <p>12.16053°E</p>
+                                <p>No disponible</p>
                             </div>
                         </div>
                     </div>
@@ -92,12 +92,12 @@
             <div class="section-hero">
                 <div class="hero-overlay">
                     <h2>EQUIPO CANSAT</h2>
-                    <p>Conoce a los especialistas detrás de la misión</p>
+                    <p>Somos un equipo que nos apasiona encontrar soluciones a todo tipo de problema e inovar </p>
                 </div>
             </div>
             <div class="team-grid" id="team-container"></div>
         </main>
-
+          
         <footer class="footer">
             <div class="email-contact">info@satela.com</div>
             <div class="footer-logo">Satela</div>
@@ -124,5 +124,7 @@
     
     <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
     <script src="script.js"></script>
+    <!--el primer script es la libreria que hace que reciba datos por mqtt y despues el segundo script
+    es para ponerlos en los widgets y botones, van en ese orden por que si se invierten la libreria no carga -->
 </body>
 </html>

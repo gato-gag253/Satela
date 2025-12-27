@@ -1,4 +1,4 @@
-// --- DATOS ---
+//contacto
 const teamMembers = [
     { 
         img: "https://gato-gag253.github.io/Satela/Imagenes/Sofia.jpg", 
@@ -32,7 +32,7 @@ const teamMembers = [
     }
 ];
 
-// --- GENERAR TARJETAS ---
+// pop up
 const container = document.getElementById("team-container");
 
 teamMembers.forEach((member, index) => {
@@ -48,20 +48,17 @@ teamMembers.forEach((member, index) => {
     container.appendChild(card);
 });
 
-// --- CAMBIO DE PESTAÑA Y COLOR DE NAVBAR ---
+// menu superior
 function switchTab(tabName, event) {
     if(event) event.preventDefault();
 
-    // 1. Mostrar/Ocultar Vistas
+    
     document.getElementById('view-datos').style.display = tabName === 'datos' ? 'block' : 'none';
     document.getElementById('view-cansat').style.display = tabName === 'cansat' ? 'block' : 'none';
-    
-    // 2. Manejar Clase Active
     const links = document.querySelectorAll('.nav-link');
     links.forEach(link => link.classList.remove('active'));
     if(event) event.target.classList.add('active');
-
-    // 3. CAMBIO DE COLOR NAVBAR
+    // Cambiar color de menu
     const navbar = document.getElementById('mainNavbar');
     if (tabName === 'cansat') {
         navbar.classList.add('navy-nav');
@@ -70,7 +67,7 @@ function switchTab(tabName, event) {
     }
 }
 
-// --- POPUP ---
+// Pop up
 const popupBg = document.getElementById("popupBg");
 const popupImg = document.getElementById("popupImg");
 const popupTitle = document.getElementById("popupTitle");
@@ -104,46 +101,55 @@ popupBg.onclick = function(event) {
     if (event.target === popupBg) closePopup();
 }
 
-// --- MODO OSCURO ---
+// Cambiar modo oscuro
 function toggleTheme(event) {
-    if(event) event.preventDefault();
+    if(event) {
+        event.preventDefault();
+        event.stopPropagation(); // Evita que el clic afecte a otros elementos del menu
+    }
     document.body.classList.toggle('dark-mode');
+    
+    // Opcional: Guardar en el navegador para que no se pierda al recargar
+    const isDark = document.body.classList.contains('dark-mode');
+    localStorage.setItem('dark-theme', isDark);
 }
 
-// ---------------------------------------------------------
-// --- SISTEMA DE ANTENAS EN LA NUBE (PUBLIC BROKER) ---
-// ---------------------------------------------------------
+// Al cargar la página, revisar si ya estaba en modo oscuro
+window.onload = () => {
+    if (localStorage.getItem('dark-theme') === 'true') {
+        document.body.classList.add('dark-mode');
+    }
+};
 
-// Nos conectamos al servidor público de HiveMQ (Puerto seguro 8884)
-// Esto funciona en GitHub Pages porque usa WSS (WebSocket Secure)
+//  Datos mqtt
+// Puerto 8884 es por que usa el broker de hivemq
+// esto sirve para poder recibir los datos
 const brokerUrl = 'wss://broker.hivemq.com:8884/mqtt';
-
-console.log("Intentando conectar a la nube...");
+//uso wss por que sino al ser solo datos git hub no deja verlos
+console.log("Conectando a hivemq"); //uso console.log por que puede fallar 
 const client = mqtt.connect(brokerUrl);
 
 client.on('connect', () => {
-    console.log(" Conectado a HiveMQ Public Broker");
+    console.log(" Conectado a HiveMQ ");
     
-    // Nos suscribimos a todos los sensores de satela
+    // se suscribe a los topicos de satela
     client.subscribe('satela/#', (err) => {
         if (!err) {
-            console.log(" Escuchando tópicos 'satela/#'");
+            console.log(" topicos listos");
         }
     });
 });
 
 client.on('message', (topic, message) => {
-    // Convertimos el mensaje (Buffer) a texto
+    // pasamos el dato a texto
     const valor = message.toString();
     console.log(`Recibido [${topic}]: ${valor}`);
-
-    // --- ANTENA 1: ALTITUD ---
+    //altitud
     if (topic === 'satela/altitud') {
         const el = document.getElementById('dato-altitud');
         if(el) el.innerText = valor + " m";
     }
-
-    // --- ANTENA 2: TEMPERATURA ---
+    //altitud
     if (topic === 'satela/temp') {
         const el = document.getElementById('dato-temp');
         if(el) {
@@ -152,22 +158,26 @@ client.on('message', (topic, message) => {
             el.style.color = parseFloat(valor) > 40 ? '#ff4444' : ''; 
         }
     }
-
-    // --- ANTENA 3: PRESIÓN ---
+    //Presion
     if (topic === 'satela/presion') {
         const el = document.getElementById('dato-presion');
         if(el) el.innerText = valor;
     }
 
-    // --- ANTENA 4: HUMEDAD ---
+    // HUMEDAD 
     if (topic === 'satela/humedad') {
         const el = document.getElementById('dato-humedad');
         if(el) el.innerText = valor + " %";
     }
 
-    // --- ANTENA 5: VELOCIDAD ---
+    //VELOCIDAD 
     if (topic === 'satela/velocidad') {
         const el = document.getElementById('dato-velocidad');
         if(el) el.innerText = valor;
     }
 });
+
+/*¿Por que uso Hivemq?
+ bueno es por que sino necesito algo que reciba el dato y lo devuelva algo como node-red,n8n
+ o un servidor de python el problema es que dependan de que el archivo se ejecuta en alguna compu
+ en cambio a si solo necesitamos algun microcontrolador que envie el dato por wifi */
