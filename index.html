@@ -32,12 +32,17 @@
            
             <div class="grid-layout">
                 <div class="column">
-                    <div class="widget">
-                        <div class="widget-header"><span>ALTITUD (m)</span></div>
-                        <div class="iframe-container small-h">
-                            <div id="dato-altitud" class="fake-chart-data">-- m</div>
+                    <div class="widget" onclick="openChartModal('altitud')" style="cursor: pointer;">
+                        <div class="widget-header">
+                            <span>ALTITUD (m)</span>
+                            <span id="dato-altitud" style="font-size: 0.8rem; color: #666;">-- m</span>
                         </div>
+                        <div class="iframe-container small-h" style="position: relative; height: 100px;">
+                            <canvas id="chartAltitud"></canvas>
+                        </div>
+                        <div style="text-align: center; font-size: 0.7rem; color: #aaa; margin-top: 5px;">Ver mas</div>
                     </div>
+
                     <div class="widget">
                         <div class="widget-header"><span>TEMPERATURA (°C)</span></div>
                         <div class="data-row">
@@ -51,13 +56,18 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="column-center">
                     <div class="widget video-widget">
                         <div class="widget-header"><span>Video</span></div>
                         <div class="video-frame">
                             <iframe src="" frameborder="0"></iframe>
                         </div>
+                    </div>
+                    <div class="widget">
+                        <div class="widget-header"><span>Estado:</span></div>
+                     <div class="estado">
+                         <span id="Estado" class="Estado">Desconectado</span>
+                     </div>
                     </div>
                 </div>
 
@@ -78,11 +88,15 @@
                         </div>
                     </div>
 
-                    <div class="widget">
-                        <div class="widget-header"><span>VELOCIDAD (m/s)</span></div>
-                        <div class="data-row">
-                            <span id="dato-velocidad" class="sensor-value">--</span>
-                        </div>
+                    <div class="widget" onclick="openChartModal('velocidad')" style="cursor: pointer;">
+                            <div class="widget-header">
+                                <span>VELOCIDAD (m/s)</span>
+                                <span id="dato-velocidad" style="font-size: 0.8rem; color: #666;">--</span>
+                            </div>
+                            <div class="iframe-container small-h" style="position: relative; height: 100px;">
+                                <canvas id="chartVelocidad"></canvas>
+                            </div>
+                            <div style="text-align: center; font-size: 0.7rem; color: #aaa; margin-top: 5px;">Ver mas</div>
                     </div>
                 </div>
             </div>
@@ -121,10 +135,20 @@
             </div>
         </div>
     </div>
-    
+    <div class="chart-modal-overlay" id="chartModalBg">
+      <div class="chart-modal-card">
+         <button class="close-chart-btn" onclick="closeChartModal()">×</button>
+         <h2 id="chartModalTitle">TELEMETRÍA</h2>
+          <div class="large-chart-box">
+             <canvas id="bigChartAltitud"></canvas>
+             <canvas id="bigChartVelocidad"></canvas>
+         </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
     <script src="script.js"></script>
-    <!--el primer script es la libreria que hace que reciba datos por mqtt y despues el segundo script
+    <!--el primer y segundo scripts son las librerias que hacen que reciba datos por mqtt y generar graficos,  despues el tercer script
     es para ponerlos en los widgets y botones, van en ese orden por que si se invierten la libreria no carga -->
 </body>
 </html>
