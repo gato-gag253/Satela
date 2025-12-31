@@ -15,31 +15,31 @@ const teamMembers = [
     { 
         img: "https://gato-gag253.github.io/Satela/Imagenes/Sofia.jpg", 
         title: "Sofía Rojas", 
-        text: "Especialista en comunicaciones.", 
+        text: ".", 
         email: "sg.rojas@alumno.etec.um.edu.ar",
     },
     { 
         img: "https://gato-gag253.github.io/Satela/Imagenes/Nacho.jpg", 
         title: "Juan Ignacio Calderón", 
-        text: "Diseño estructural.", 
+        text: ".", 
         email: "jil.calderon@alumno.etec.um.edu.ar" 
     },
     { 
         img: "https://gato-gag253.github.io/Satela/Imagenes/Logo%20Satela.png", 
         title: "Gastón García", 
-        text: "Software y sistemas.", 
+        text: ".", 
         email: "gal.garcia@alumno.etec.um.edu.ar" 
     },
     { 
         img: "https://gato-gag253.github.io/Satela/Imagenes/Santy.jpg", 
         title: "Santiago Juárez", 
-        text: "Analista de datos.", 
+        text: ".", 
         email: "sc.juarez@alumno.etec.um.edu.ar" 
     },
     { 
         img: "https://gato-gag253.github.io/Satela/Imagenes/Logo%20Satela.png", 
         title: "Agustín Cerroni", 
-        text: "Logística y recuperación.", 
+        text: ".", 
         email: "a.cerroni@alumno.etec.um.edu.ar" 
     }
 ];
